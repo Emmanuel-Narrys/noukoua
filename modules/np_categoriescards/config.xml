@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+	<name>np_categoriescards</name>
+	<displayName><![CDATA[Categories Cards]]></displayName>
+	<version><![CDATA[1.0.0]]></version>
+	<description><![CDATA[List of Categories Cards]]></description>
+	<author><![CDATA[Emmanuel Narrys]]></author>
+	<tab><![CDATA[administration]]></tab>
+	<is_configurable>1</is_configurable>
+	<need_instance>1</need_instance>
+</module>

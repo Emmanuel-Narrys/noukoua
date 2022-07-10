@@ -28,29 +28,963 @@
 <!doctype html>
 <html lang="{$language.locale}">
 
-  <head>
-    {block name='head'}
-      {include file='_partials/head.tpl'}
+<head>
+  {block name='head'}
+    {include file='_partials/head.tpl'}
+  {/block}
+</head>
+
+<body id="{$page.page_name}" class="{$page.body_classes|classnames}">
+
+  {block name='hook_after_body_opening_tag'}
+    {hook h='displayAfterBodyOpeningTag'}
+  {/block}
+
+  <main>
+    {block name='product_activation'}
+      {include file='catalog/_partials/product-activation.tpl'}
     {/block}
-  </head>
 
-  <body id="{$page.page_name}" class="{$page.body_classes|classnames}">
-
-    {block name='hook_after_body_opening_tag'}
-      {hook h='displayAfterBodyOpeningTag'}
-    {/block}
-
-    <main>
-      {block name='product_activation'}
-        {include file='catalog/_partials/product-activation.tpl'}
+    <header class="header">
+      {block name='header'}
+        {include file='_partials/header.tpl'}
       {/block}
+    </header>
+    {block name="menu_mobile"}
+      <div class="toggle-menu-mobile">
+        <div class="container">
+          <div class="header">
+            <div class="col">
+              <a href="" class="link">
+                <i class="fa fa-user-circle-o"></i>
+                Salut, Utilisateur
+              </a>
+            </div>
+            {block name='hook_displayLang'}
+              {hook h='displayLang'}
+            {/block}
+          </div>
+          <!-- Category Tabs List Mobile -->
+          <div class="tab-category-mobile">
+            <ul class="tab-list" role="tablist">
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/service.png" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="tab-item" role="presentation">
+                <button class="tab-item-btn">
+                  <div class="content-title">
+                    <img class="img" src="./assets/images/service.png" alt="" width="40px" height="40px">
+                    <h5 class="name">Pièce de remplacement</h5>
+                  </div>
+                  <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="tab-item-list">
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                  <li class="tab-sub-item">
+                    <a href="" class="tab-item-link">
+                      <div class="content-title">
+                        <img src="./assets/images/img8.jpeg" alt="" class="img" width="40px" height="40px">
+                        <h4 class="name">Essieux et transmission</h4>
+                      </div>
+                      <i class="fa fa-arrow-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="close"></div>
+      </div>
+    {/block}
 
-      <header id="header">
-        {block name='header'}
-          {include file='_partials/header.tpl'}
+    {if $page.page_name == 'index'}
+
+      <main class="main">
+        {block name='notifications'}
+          {include file='_partials/notifications.tpl'}
         {/block}
-      </header>
 
+        {hook h="displayWrapperTop"}
+
+
+        {block name="left_column"}
+          <div id="left-column" class="col-xs-12 col-sm-4 col-md-3">
+            {if $page.page_name == 'product'}
+              {hook h='displayLeftColumnProduct'}
+            {else}
+              {hook h="displayLeftColumn"}
+            {/if}
+          </div>
+        {/block}
+
+        {block name="content_wrapper"}
+          {hook h="displayContentWrapperTop"}
+          {block name="content"}
+            <p>Hello world! This is HTML5 Boilerplate.</p>
+          {/block}
+          {hook h="displayContentWrapperBottom"}
+        {/block}
+
+        {block name="right_column"}
+          <div id="right-column" class="col-xs-12 col-sm-4 col-md-3">
+            {if $page.page_name == 'product'}
+              {hook h='displayRightColumnProduct'}
+            {else}
+              {hook h="displayRightColumn"}
+            {/if}
+          </div>
+        {/block}
+        {hook h="displayWrapperBottom"}
+      </main>
+    {else}
       <section id="wrapper">
         {block name='notifications'}
           {include file='_partials/notifications.tpl'}
@@ -94,22 +1028,23 @@
         </div>
         {hook h="displayWrapperBottom"}
       </section>
+    {/if}
 
-      <footer id="footer" class="js-footer">
-        {block name="footer"}
-          {include file="_partials/footer.tpl"}
-        {/block}
-      </footer>
+    <footer class="footer">
+      {block name="footer"}
+        {include file="_partials/footer.tpl"}
+      {/block}
+    </footer>
 
-    </main>
+  </main>
 
-    {block name='javascript_bottom'}
-      {include file="_partials/javascript.tpl" javascript=$javascript.bottom}
-    {/block}
+  {block name='javascript_bottom'}
+    {include file="_partials/javascript.tpl" javascript=$javascript.bottom}
+  {/block}
 
-    {block name='hook_before_body_closing_tag'}
-      {hook h='displayBeforeBodyClosingTag'}
-    {/block}
-  </body>
+  {block name='hook_before_body_closing_tag'}
+    {hook h='displayBeforeBodyClosingTag'}
+  {/block}
+</body>
 
 </html>

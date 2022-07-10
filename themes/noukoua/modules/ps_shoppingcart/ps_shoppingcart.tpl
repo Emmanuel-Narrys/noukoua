@@ -22,18 +22,38 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<div id="_desktop_cart">
-  <div class="blockcart cart-preview {if $cart.products_count > 0}active{else}inactive{/if}" data-refresh-url="{$refresh_url}">
+{* <div id="_desktop_cart">
+  <div class="blockcart cart-preview {if $cart.products_count > 0}active{else}inactive{/if}"
+    data-refresh-url="{$refresh_url}">
     <div class="header">
       {if $cart.products_count > 0}
-        <a rel="nofollow" aria-label="{l s='Shopping cart link containing %nbProducts% product(s)' sprintf=['%nbProducts%' => $cart.products_count] d='Shop.Theme.Checkout'}" href="{$cart_url}">
-      {/if}
+        <a rel="nofollow"
+          aria-label="{l s='Shopping cart link containing %nbProducts% product(s)' sprintf=['%nbProducts%' => $cart.products_count] d='Shop.Theme.Checkout'}"
+          href="{$cart_url}">
+        {/if}
         <i class="material-icons shopping-cart" aria-hidden="true">shopping_cart</i>
         <span class="hidden-sm-down">{l s='Cart' d='Shop.Theme.Checkout'}</span>
         <span class="cart-products-count">({$cart.products_count})</span>
-      {if $cart.products_count > 0}
+        {if $cart.products_count > 0}
         </a>
       {/if}
     </div>
   </div>
+</div> *}
+
+<div class="div-cart  {if $cart.products_count > 0}active{else}inactive{/if}" data-refresh-url="{$refresh_url}">
+  {if $cart.products_count > 0}
+    <a href="{$cart_url}"
+      aria-label="{l s='Shopping cart link containing %nbProducts% product(s)' sprintf=['%nbProducts%' => $cart.products_count] d='Shop.Theme.Checkout'}">
+    {/if}
+    <div class="icon">
+      <i class="fa fa-shopping-cart i"></i>
+      <div class="count">{$cart.products_count}</div>
+    </div>
+    <div class="content">
+      <span class="hover">{l s='Panier' d='Shop.Theme.Checkout'}</span>
+    </div>
+    {if $cart.products_count > 0}
+    </a>
+  {/if}
 </div>

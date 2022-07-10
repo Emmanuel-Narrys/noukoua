@@ -39,3 +39,5 @@
     {/foreach}
   </script>
 {/if}
+
+<script src="{$urls.theme_assets}/js/owl.carousel.min.js"></script>

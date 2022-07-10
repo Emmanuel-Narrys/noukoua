@@ -47,13 +47,13 @@
       <link rel="alternate" href="{$pageUrl}" hreflang="{$code}">
     {/foreach}
   {/block}
-  
+
   {block name='head_microdata'}
     {include file="_partials/microdata/head-jsonld.tpl"}
   {/block}
-  
+
   {block name='head_microdata_special'}{/block}
-  
+
   {block name='head_pagination_seo'}
     {include file="_partials/pagination-seo.tpl"}
   {/block}
@@ -63,8 +63,9 @@
     <meta property="og:description" content="{$page.meta.description}" />
     <meta property="og:url" content="{$urls.current_url}" />
     <meta property="og:site_name" content="{$shop.name}" />
-    {if !isset($product) && $page.page_name != 'product'}<meta property="og:type" content="website" />{/if}
-  {/block}  
+    {if !isset($product) && $page.page_name != 'product'}
+    <meta property="og:type" content="website" />{/if}
+  {/block}
 {/block}
 
 {block name='head_viewport'}

@@ -1,10 +1,10 @@
-name: classic
-display_name: Classic
+name: noukoua
+display_name: Noukoua-Auto
 version: 1.0.0
 author:
-  name: "PrestaShop Team"
-  email: "pub@prestashop.com"
-  url: "https://www.prestashop.com"
+  name: "Emmanuel-Narrys"
+  email: "emmanuelnarrys@gmail.com"
+  url: ""
 
 meta:
   compatibility:
@@ -69,11 +69,22 @@ global_settings:
       displayTop:
         - ps_mainmenu
         - ps_searchbar
+      displayMainMenu:
+        - ps_mainmenu
+      displayLang:
+        - ps_languageselector
+      displayShoppingCart:
+        - ps_shoppingcart
       displayHome:
         - ps_imageslider
+        - np_featuredcards
+        - np_categoriescards
+        - np_services
+        - np_categoriestabs
+        - np_categoriestabsmobile
         - ps_featuredproducts
         - ps_banner
-        - ps_customtext
+        - np_about
       displayFooterBefore:
         - blockreassurance
         - ps_emailsubscription
@@ -82,6 +93,7 @@ global_settings:
         - ps_linklist
         - ps_customeraccountlinks
         - ps_contactinfo
+        - ps_socialfollow
       displayFooterAfter:
         - blockreassurance
       displayLeftColumn:

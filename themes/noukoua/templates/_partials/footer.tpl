@@ -22,7 +22,7 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<div class="container">
+{* <div class="container">
   <div class="row">
     {block name='hook_footer_before'}
       {hook h='displayFooterBefore'}
@@ -53,4 +53,48 @@
       </div>
     </div>
   </div>
-</div>
+</div> *}
+
+  <div class="footer-top">
+    <div class="footer-top-card">
+      <div class="card-title">
+        <h5>{l s="Achat de Confiance"}</h5>
+      </div>
+      <div class="card-content">
+        <img src="{$urls.theme_assets}images/stripe.png" alt="Stripe" />
+        <img src="{$urls.theme_assets}images/ssl.png" alt="Ssl" />
+        <img src="{$urls.theme_assets}images/norton.png" alt="Norton" />
+      </div>
+    </div>
+    <div class="footer-top-card">
+      <div class="card-title">
+        <h5>{l s="Options de Payement"}</h5>
+      </div>
+      <div class="card-content payement">
+        <img src="{$urls.theme_assets}images/Visa.png" alt="Visa" />
+        <img src="{$urls.theme_assets}images/Mastercard.png" alt="Mastercard" />
+        <img src="{$urls.theme_assets}images/paypal.png" alt="Paypal" />
+      </div>
+    </div>
+  </div>
+  <div class="footer-center">
+    {* <div class="footer-center-card">
+      <div class="card-title">
+        <h5>Compte</h5>
+      </div>
+      <div class="card-content-block">
+        <a href="#">Mon compte</a>
+        <a href="#">S&apos;inscrire</a>
+      </div>
+    </div> *}
+    {block name='hook_footer'}
+      {hook h='displayFooter'}
+    {/block}
+  </div>
+  <div class="copyright">
+    {block name='copyright_link'}
+      <a href="{$urls.pages.index}" rel="noopener noreferrer nofollow">
+        {l s='%copyright% %year% - Ecommerce software by %prestashop%' sprintf=['%prestashop%' => 'Emmanuel Narrys', '%year%' => 'Y'|date, '%copyright%' => '©'] d='Shop.Theme.Global'}
+      </a>
+    {/block}
+  </div>

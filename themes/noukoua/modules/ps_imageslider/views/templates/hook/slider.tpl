@@ -23,41 +23,134 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 
-{if $homeslider.slides}
-  <div id="carousel" data-ride="carousel" class="carousel slide" data-interval="{$homeslider.speed}" data-wrap="{(string)$homeslider.wrap}" data-pause="{$homeslider.pause}" data-touch="true">
-    <ol class="carousel-indicators">
-      {foreach from=$homeslider.slides item=slide key=idxSlide name='homeslider'}
-      <li data-target="#carousel" data-slide-to="{$idxSlide}"{if $idxSlide == 0} class="active"{/if}></li>
-      {/foreach}
-    </ol>
-    <ul class="carousel-inner" role="listbox" aria-label="{l s='Carousel container' d='Shop.Theme.Global'}">
-      {foreach from=$homeslider.slides item=slide name='homeslider'}
-        <li class="carousel-item {if $smarty.foreach.homeslider.first}active{/if}" role="option" aria-hidden="{if $smarty.foreach.homeslider.first}false{else}true{/if}">
-          <a href="{$slide.url}">
-            <figure>
-              <img src="{$slide.image_url}" alt="{$slide.legend|escape}" loading="lazy" width="1110" height="340">
-              {if $slide.title || $slide.description}
-                <figcaption class="caption">
-                  <h2 class="display-1 text-uppercase">{$slide.title}</h2>
-                  <div class="caption-description">{$slide.description nofilter}</div>
-                </figcaption>
-              {/if}
-            </figure>
-          </a>
-        </li>
-      {/foreach}
-    </ul>
-    <div class="direction" aria-label="{l s='Carousel buttons' d='Shop.Theme.Global'}">
-      <a class="left carousel-control" href="#carousel" role="button" data-slide="prev" aria-label="{l s='Previous' d='Shop.Theme.Global'}">
-        <span class="icon-prev hidden-xs" aria-hidden="true">
-          <i class="material-icons">&#xE5CB;</i>
-        </span>
-      </a>
-      <a class="right carousel-control" href="#carousel" role="button" data-slide="next" aria-label="{l s='Next' d='Shop.Theme.Global'}">
-        <span class="icon-next" aria-hidden="true">
-          <i class="material-icons">&#xE5CC;</i>
-        </span>
-      </a>
+
+  <!-- Slider -->
+  <section class="home-slider">
+    <div class="filter-container">
+      <form action="" method="post" class="form-filter">
+
+        <div class="title-content">
+          <h4 class="title"><i class="fa fa-car"></i>SÉLECTIONNEZ VOTRE VÉHICULE</h4>
+        </div>
+        <div class="space-content">
+          <span class="vertical"></span>
+          <span class="vertical"></span>
+        </div>
+        <select name="year" id="year">
+          <option value="">Année</option>
+          <optgroup label="2010 - 2021">
+            <option value="">2010</option>
+            <option value="">2011</option>
+            <option value="">2012</option>
+            <option value="">2013</option>
+            <option value="">2014</option>
+          </optgroup>
+          <optgroup label="2000 - 2009">
+            <option value="">2000</option>
+            <option value="">2001</option>
+            <option value="">2002</option>
+            <option value="">2003</option>
+            <option value="">2004</option>
+          </optgroup>
+        </select>
+        <select name="manufacturer" id="manufacturer" disabled>
+          <option value="">Marque</option>
+          <optgroup label="A - F">
+            <option value="">apadzojojd</option>
+          </optgroup>
+          <optgroup label="G - L">
+            <option value="">sdpksqopdk</option>
+          </optgroup>
+          <optgroup label="M - R">
+            <option value="">sdopskdopsqk</option>
+          </optgroup>
+          <optgroup label="S - Z">
+            <option value="">l,dlsq,</option>
+          </optgroup>
+        </select>
+        <select name="model" id="model" disabled>
+          <option value="">Modèle</option>
+          <optgroup label="Voiture">
+            <option value="">Toyota xc</option>
+          </optgroup>
+          <optgroup label="Camion">
+            <option value="">Toyota XSX</option>
+          </optgroup>
+        </select>
+      </form>
+      <div class="text-content">
+        <h4 class="text">OU</h4>
+      </div>
+      <form action="" method="post" class="form-filter imatriculation">
+        <input type="text" name="imatriculation" id="imatriculation" placeholder="Numéro d'imatriculation">
+      </form>
     </div>
-  </div>
-{/if}
+
+    <div class="owl-carousel" id="owl-carousel">
+      {foreach from=$homeslider.slides item=slide name='homeslider'}
+        <div class="item">
+          <img src="{$slide.image_url}" alt="{$slide.legend|escape}" />
+        </div>
+      {/foreach}
+    </div>
+
+    <div class="filter-container mobile">
+      <form action="" method="post" class="form-filter">
+
+        <div class="title-content">
+          <h4 class="title"><i class="fa fa-car"></i>SÉLECTIONNEZ VOTRE VÉHICULE</h4>
+        </div>
+        <div class="space-content">
+          <span class="vertical"></span>
+          <span class="vertical"></span>
+        </div>
+        <select name="year" id="year">
+          <option value="">Année</option>
+          <optgroup label="2010 - 2021">
+            <option value="">2010</option>
+            <option value="">2011</option>
+            <option value="">2012</option>
+            <option value="">2013</option>
+            <option value="">2014</option>
+          </optgroup>
+          <optgroup label="2000 - 2009">
+            <option value="">2000</option>
+            <option value="">2001</option>
+            <option value="">2002</option>
+            <option value="">2003</option>
+            <option value="">2004</option>
+          </optgroup>
+        </select>
+        <select name="manufacturer" id="manufacturer" disabled>
+          <option value="">Marque</option>
+          <optgroup label="A - F">
+            <option value="">apadzojojd</option>
+          </optgroup>
+          <optgroup label="G - L">
+            <option value="">sdpksqopdk</option>
+          </optgroup>
+          <optgroup label="M - R">
+            <option value="">sdopskdopsqk</option>
+          </optgroup>
+          <optgroup label="S - Z">
+            <option value="">l,dlsq,</option>
+          </optgroup>
+        </select>
+        <select name="model" id="model" disabled>
+          <option value="">Modèle</option>
+          <optgroup label="Voiture">
+            <option value="">Toyota xc</option>
+          </optgroup>
+          <optgroup label="Camion">
+            <option value="">Toyota XSX</option>
+          </optgroup>
+        </select>
+      </form>
+      <div class="text-content">
+        <h4 class="text">OU</h4>
+      </div>
+      <form action="" method="post" class="form-filter imatriculation">
+        <input type="text" name="imatriculation" id="imatriculation" placeholder="Numéro d'imatriculation">
+      </form>
+    </div>
+  </section>
