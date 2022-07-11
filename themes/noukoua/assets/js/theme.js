@@ -11,7 +11,7 @@ $(function () {
     /*  #########################   Functions   ###########################*/
 
     var setTabCategory = function (index) {
-        if($('.tab-content')){
+        if($('.tab-content').children().length){
             for (var i = 0; i < $('.tab-content').children().length; i++) {
                 $('.tab-content').children()[i].setAttribute('aria-hidden', true)
             }
