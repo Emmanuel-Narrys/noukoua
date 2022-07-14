@@ -24,6 +24,8 @@
 *  International Registered Trademark & Property of PrestaShop SA
 */
 
+use PrestaShop\PrestaShop\Adapter\Entity\Category;
+
 if (!defined('_PS_VERSION_')) {
     exit;
 }
@@ -219,6 +221,16 @@ class Np_categoriescards extends Module
 
     public function hookDisplayHome()
     {
+        $categorysCards = Category::getHomeCategories($this->context->language->id);
+        $categorysCards = array_map(function ($a){
+            $a['link'] = $this->context->link->getCategoryLink((int) $a['id_category']);
+            $a['link_img'] = $this->context->link->getCatImageLink($a['link_rewrite'],(int) $a['id_category']);
+            return (object) $a;
+        }, $categorysCards);
+
+        $this->context->smarty->assign([
+            'categorysCards' => $categorysCards
+        ]);
         return $this->context->smarty->fetch(_PS_THEME_DIR_.'modules/'.$this->name.'/'.$this->name.'.tpl');
     }
 }

@@ -85,6 +85,8 @@ global_settings:
         - ps_featuredproducts
         - ps_banner
         - np_about
+      displayCategoriestabsmobile:
+        - np_categoriestabsmobile
       displayFooterBefore:
         - blockreassurance
         - ps_emailsubscription
