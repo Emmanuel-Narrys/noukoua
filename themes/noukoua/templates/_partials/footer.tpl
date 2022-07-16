@@ -91,6 +91,12 @@
       {hook h='displayFooter'}
     {/block}
   </div>
+  {block name='hook_footer_after'}
+    {hook h='displayFooterAfter'}
+  {/block}
+  {block name='hook_footer_before'}
+    {hook h='displayFooterBefore'}
+  {/block}
   <div class="copyright">
     {block name='copyright_link'}
       <a href="{$urls.pages.index}" rel="noopener noreferrer nofollow">
