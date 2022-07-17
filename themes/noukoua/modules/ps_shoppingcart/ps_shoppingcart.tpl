@@ -41,19 +41,22 @@
   </div>
 </div> *}
 
-<div class="div-cart  {if $cart.products_count > 0}active{else}inactive{/if}" data-refresh-url="{$refresh_url}">
-  {if $cart.products_count > 0}
-    <a href="{$cart_url}"
-      aria-label="{l s='Shopping cart link containing %nbProducts% product(s)' sprintf=['%nbProducts%' => $cart.products_count] d='Shop.Theme.Checkout'}">
-    {/if}
-    <div class="icon">
-      <i class="fa fa-shopping-cart i"></i>
-      <div class="count">{$cart.products_count}</div>
-    </div>
-    <div class="content">
-      <span class="hover">{l s='Panier' d='Shop.Theme.Checkout'}</span>
-    </div>
+<div id="_desktop_cart" class="div-cart">
+  <div class="blockcart cart-preview  {if $cart.products_count > 0}active{else}inactive{/if}"
+    data-refresh-url="{$refresh_url}">
     {if $cart.products_count > 0}
-    </a>
-  {/if}
+      <a href="{$cart_url}"
+        aria-label="{l s='Shopping cart link containing %nbProducts% product(s)' sprintf=['%nbProducts%' => $cart.products_count] d='Shop.Theme.Checkout'}">
+      {/if}
+      <div class="icon">
+        <i class="fa fa-shopping-cart i"></i>
+        <div class="count">{$cart.products_count}</div>
+      </div>
+      <div class="content">
+        <span class="hover">{l s='Panier' d='Shop.Theme.Checkout'}</span>
+      </div>
+      {if $cart.products_count > 0}
+      </a>
+    {/if}
+  </div>
 </div>

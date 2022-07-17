@@ -103,6 +103,8 @@ global_settings:
         - ps_facetedsearch
       displaySearch:
         - ps_searchbar
+      displaySearchMobile:
+        - ps_searchbar
       displayProductAdditionalInfo:
         - ps_sharebuttons
       displayReassurance:

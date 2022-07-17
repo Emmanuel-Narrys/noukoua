@@ -64,10 +64,17 @@
         <div class="container">
           <div class="header">
             <div class="col">
-              <a href="" class="link">
-                <i class="fa fa-user-circle-o"></i>
-                Salut, Utilisateur
-              </a>
+              {if $customer.is_logged}
+                <a href="{$urls.pages.my_account}" class="link">
+                  <i class="fa fa-user-circle-o"></i>
+                  {$customer.firstname} {$customer.lastname|truncate:8:'...'}
+                </a>
+              {else}
+                <a href="" class="link">
+                  <i class="fa fa-user-circle-o"></i>
+                  Salut, Utilisateur
+                </a>
+              {/if}
             </div>
             {block name='hook_displayLang'}
               {hook h='displayLang'}
@@ -91,9 +98,9 @@
 
         {hook h="displayWrapperTop"}
 
-        {block name='breadcrumb'}
+        {* {block name='breadcrumb'}
           {include file='_partials/breadcrumb.tpl'}
-        {/block}
+        {/block} *}
 
         {block name="left_column"}
           <div id="left-column" class="col-xs-12 col-sm-4 col-md-3">
