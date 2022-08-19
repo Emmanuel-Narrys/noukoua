@@ -15040,9 +15040,9 @@ body#checkout #hook-display-after-carrier>[class^="col"].links .row>[class^="col
   transition: 0.3s ease-in-out;
 }
 
-.card_category:first-child {
+/* .card_category:first-child {
   margin-left: 0px;
-}
+} */
 
 .card_category:last-child {
   margin-right: 0px;
