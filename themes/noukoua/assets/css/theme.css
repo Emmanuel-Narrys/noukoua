@@ -15021,11 +15021,10 @@ body#checkout #hook-display-after-carrier>[class^="col"].links .row>[class^="col
 
 .cards_category .cards_category_content {
   width: 100%;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  row-gap: 20px;
 }
-
-
 
 .card_category {
   width: 120px;
