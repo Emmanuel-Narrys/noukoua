@@ -47,6 +47,9 @@
     {/block}
 
     <div class="div-header-right">
+      {block name='hook_displayLang'}
+        {hook h="displayLang"}
+      {/block}
       <!-- Account -->
       <div class="div-account" id="button-login">
         <div class="icon">
@@ -56,7 +59,8 @@
           <a href="{$urls.pages.my_account}" class="icon link">
             <i class="fa fa-user-circle i"></i>
           </a>
-          <a href="{$urls.pages.my_account}" class="customer-name">{$customer.firstname} {$customer.lastname|truncate:8:'...'}</a>
+          <a href="{$urls.pages.my_account}" class="customer-name">{$customer.firstname}
+            {$customer.lastname|truncate:8:'...'}</a>
         {else}
           <a href="/" class="icon link">
             <i class="fa fa-user-circle i"></i>

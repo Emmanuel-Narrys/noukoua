@@ -76,9 +76,9 @@
                 </a>
               {/if}
             </div>
-            {block name='hook_displayLang'}
+            {* {block name='hook_displayLang'}
               {hook h='displayLang'}
-            {/block}
+            {/block} *}
           </div>
           <!-- Category Tabs List Mobile -->
           {block name='hook_displayCategoriestabsmobile'}
