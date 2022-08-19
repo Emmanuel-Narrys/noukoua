@@ -62,7 +62,7 @@
           <a href="{$urls.pages.my_account}" class="customer-name">{$customer.firstname}
             {$customer.lastname|truncate:8:'...'}</a>
         {else}
-          <a href="/" class="icon link">
+          <a href="{$urls.pages.authentication}" class="icon link">
             <i class="fa fa-user-circle i"></i>
           </a>
           <div class="content">
