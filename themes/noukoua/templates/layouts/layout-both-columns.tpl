@@ -70,7 +70,7 @@
                   {$customer.firstname} {$customer.lastname|truncate:8:'...'}
                 </a>
               {else}
-                <a href="" class="link">
+                <a href="{$urls.pages.authentication}" class="link">
                   <i class="fa fa-user-circle-o"></i>
                   Salut, Utilisateur
                 </a>
