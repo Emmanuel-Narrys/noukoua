@@ -6,7 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'AdminStripe_officialPaymentIntentController' => $baseDir . '/controllers/admin/AdminStripe_officialPaymentIntent.php',
     'AdminStripe_officialProcessLoggerController' => $baseDir . '/controllers/admin/AdminStripe_officialProcessLogger.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'ConfigurationActions' => $baseDir . '/classes/actions/ConfigurationActions.php',
@@ -47,6 +46,7 @@ return array(
     'Stripe\\BitcoinTransaction' => $vendorDir . '/stripe/stripe-php/lib/BitcoinTransaction.php',
     'Stripe\\Capability' => $vendorDir . '/stripe/stripe-php/lib/Capability.php',
     'Stripe\\Card' => $vendorDir . '/stripe/stripe-php/lib/Card.php',
+    'Stripe\\CashBalance' => $vendorDir . '/stripe/stripe-php/lib/CashBalance.php',
     'Stripe\\Charge' => $vendorDir . '/stripe/stripe-php/lib/Charge.php',
     'Stripe\\Checkout\\Session' => $vendorDir . '/stripe/stripe-php/lib/Checkout/Session.php',
     'Stripe\\Collection' => $vendorDir . '/stripe/stripe-php/lib/Collection.php',
@@ -87,6 +87,10 @@ return array(
     'Stripe\\ExchangeRate' => $vendorDir . '/stripe/stripe-php/lib/ExchangeRate.php',
     'Stripe\\File' => $vendorDir . '/stripe/stripe-php/lib/File.php',
     'Stripe\\FileLink' => $vendorDir . '/stripe/stripe-php/lib/FileLink.php',
+    'Stripe\\FinancialConnections\\Account' => $vendorDir . '/stripe/stripe-php/lib/FinancialConnections/Account.php',
+    'Stripe\\FinancialConnections\\AccountOwner' => $vendorDir . '/stripe/stripe-php/lib/FinancialConnections/AccountOwner.php',
+    'Stripe\\FinancialConnections\\AccountOwnership' => $vendorDir . '/stripe/stripe-php/lib/FinancialConnections/AccountOwnership.php',
+    'Stripe\\FinancialConnections\\Session' => $vendorDir . '/stripe/stripe-php/lib/FinancialConnections/Session.php',
     'Stripe\\FundingInstructions' => $vendorDir . '/stripe/stripe-php/lib/FundingInstructions.php',
     'Stripe\\HttpClient\\ClientInterface' => $vendorDir . '/stripe/stripe-php/lib/HttpClient/ClientInterface.php',
     'Stripe\\HttpClient\\CurlClient' => $vendorDir . '/stripe/stripe-php/lib/HttpClient/CurlClient.php',
@@ -157,6 +161,9 @@ return array(
     'Stripe\\Service\\ExchangeRateService' => $vendorDir . '/stripe/stripe-php/lib/Service/ExchangeRateService.php',
     'Stripe\\Service\\FileLinkService' => $vendorDir . '/stripe/stripe-php/lib/Service/FileLinkService.php',
     'Stripe\\Service\\FileService' => $vendorDir . '/stripe/stripe-php/lib/Service/FileService.php',
+    'Stripe\\Service\\FinancialConnections\\AccountService' => $vendorDir . '/stripe/stripe-php/lib/Service/FinancialConnections/AccountService.php',
+    'Stripe\\Service\\FinancialConnections\\FinancialConnectionsServiceFactory' => $vendorDir . '/stripe/stripe-php/lib/Service/FinancialConnections/FinancialConnectionsServiceFactory.php',
+    'Stripe\\Service\\FinancialConnections\\SessionService' => $vendorDir . '/stripe/stripe-php/lib/Service/FinancialConnections/SessionService.php',
     'Stripe\\Service\\Identity\\IdentityServiceFactory' => $vendorDir . '/stripe/stripe-php/lib/Service/Identity/IdentityServiceFactory.php',
     'Stripe\\Service\\Identity\\VerificationReportService' => $vendorDir . '/stripe/stripe-php/lib/Service/Identity/VerificationReportService.php',
     'Stripe\\Service\\Identity\\VerificationSessionService' => $vendorDir . '/stripe/stripe-php/lib/Service/Identity/VerificationSessionService.php',

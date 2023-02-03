@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit592b57555899517d68fb91414832ee75
+class ComposerStaticInit75a942e61a1a0970acdead47aaa92f3c
 {
     public static $prefixLengthsPsr4 = array (
         'S' => 
@@ -26,7 +26,6 @@ class ComposerStaticInit592b57555899517d68fb91414832ee75
     );
 
     public static $classMap = array (
-        'AdminStripe_officialPaymentIntentController' => __DIR__ . '/../..' . '/controllers/admin/AdminStripe_officialPaymentIntent.php',
         'AdminStripe_officialProcessLoggerController' => __DIR__ . '/../..' . '/controllers/admin/AdminStripe_officialProcessLogger.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'ConfigurationActions' => __DIR__ . '/../..' . '/classes/actions/ConfigurationActions.php',
@@ -67,6 +66,7 @@ class ComposerStaticInit592b57555899517d68fb91414832ee75
         'Stripe\\BitcoinTransaction' => __DIR__ . '/..' . '/stripe/stripe-php/lib/BitcoinTransaction.php',
         'Stripe\\Capability' => __DIR__ . '/..' . '/stripe/stripe-php/lib/Capability.php',
         'Stripe\\Card' => __DIR__ . '/..' . '/stripe/stripe-php/lib/Card.php',
+        'Stripe\\CashBalance' => __DIR__ . '/..' . '/stripe/stripe-php/lib/CashBalance.php',
         'Stripe\\Charge' => __DIR__ . '/..' . '/stripe/stripe-php/lib/Charge.php',
         'Stripe\\Checkout\\Session' => __DIR__ . '/..' . '/stripe/stripe-php/lib/Checkout/Session.php',
         'Stripe\\Collection' => __DIR__ . '/..' . '/stripe/stripe-php/lib/Collection.php',
@@ -107,6 +107,10 @@ class ComposerStaticInit592b57555899517d68fb91414832ee75
         'Stripe\\ExchangeRate' => __DIR__ . '/..' . '/stripe/stripe-php/lib/ExchangeRate.php',
         'Stripe\\File' => __DIR__ . '/..' . '/stripe/stripe-php/lib/File.php',
         'Stripe\\FileLink' => __DIR__ . '/..' . '/stripe/stripe-php/lib/FileLink.php',
+        'Stripe\\FinancialConnections\\Account' => __DIR__ . '/..' . '/stripe/stripe-php/lib/FinancialConnections/Account.php',
+        'Stripe\\FinancialConnections\\AccountOwner' => __DIR__ . '/..' . '/stripe/stripe-php/lib/FinancialConnections/AccountOwner.php',
+        'Stripe\\FinancialConnections\\AccountOwnership' => __DIR__ . '/..' . '/stripe/stripe-php/lib/FinancialConnections/AccountOwnership.php',
+        'Stripe\\FinancialConnections\\Session' => __DIR__ . '/..' . '/stripe/stripe-php/lib/FinancialConnections/Session.php',
         'Stripe\\FundingInstructions' => __DIR__ . '/..' . '/stripe/stripe-php/lib/FundingInstructions.php',
         'Stripe\\HttpClient\\ClientInterface' => __DIR__ . '/..' . '/stripe/stripe-php/lib/HttpClient/ClientInterface.php',
         'Stripe\\HttpClient\\CurlClient' => __DIR__ . '/..' . '/stripe/stripe-php/lib/HttpClient/CurlClient.php',
@@ -177,6 +181,9 @@ class ComposerStaticInit592b57555899517d68fb91414832ee75
         'Stripe\\Service\\ExchangeRateService' => __DIR__ . '/..' . '/stripe/stripe-php/lib/Service/ExchangeRateService.php',
         'Stripe\\Service\\FileLinkService' => __DIR__ . '/..' . '/stripe/stripe-php/lib/Service/FileLinkService.php',
         'Stripe\\Service\\FileService' => __DIR__ . '/..' . '/stripe/stripe-php/lib/Service/FileService.php',
+        'Stripe\\Service\\FinancialConnections\\AccountService' => __DIR__ . '/..' . '/stripe/stripe-php/lib/Service/FinancialConnections/AccountService.php',
+        'Stripe\\Service\\FinancialConnections\\FinancialConnectionsServiceFactory' => __DIR__ . '/..' . '/stripe/stripe-php/lib/Service/FinancialConnections/FinancialConnectionsServiceFactory.php',
+        'Stripe\\Service\\FinancialConnections\\SessionService' => __DIR__ . '/..' . '/stripe/stripe-php/lib/Service/FinancialConnections/SessionService.php',
         'Stripe\\Service\\Identity\\IdentityServiceFactory' => __DIR__ . '/..' . '/stripe/stripe-php/lib/Service/Identity/IdentityServiceFactory.php',
         'Stripe\\Service\\Identity\\VerificationReportService' => __DIR__ . '/..' . '/stripe/stripe-php/lib/Service/Identity/VerificationReportService.php',
         'Stripe\\Service\\Identity\\VerificationSessionService' => __DIR__ . '/..' . '/stripe/stripe-php/lib/Service/Identity/VerificationSessionService.php',
@@ -315,9 +322,9 @@ class ComposerStaticInit592b57555899517d68fb91414832ee75
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit592b57555899517d68fb91414832ee75::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit592b57555899517d68fb91414832ee75::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit592b57555899517d68fb91414832ee75::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit75a942e61a1a0970acdead47aaa92f3c::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit75a942e61a1a0970acdead47aaa92f3c::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit75a942e61a1a0970acdead47aaa92f3c::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * 2007-2019 PrestaShop
+ * 2007-2022 Stripe
  *
  * NOTICE OF LICENSE
  *
@@ -20,7 +20,7 @@
  *
  * @author    202-ecommerce <tech@202-ecommerce.com>
  * @copyright Copyright (c) Stripe
- * @license   Commercial license
+ * @license   Academic Free License (AFL 3.0)
  */
 
 use Stripe\Exception\SignatureVerificationException;
@@ -99,11 +99,16 @@ class stripe_officialWebhookModuleFrontController extends ModuleFrontController
         // Retrieve secret API key
         $secret_key = $this->module->getSecretKey();
 
+        if (true === empty($secret_key)) {
+            Shop::setContext(Shop::CONTEXT_ALL);
+            $secret_key = $this->module->getSecretKey();
+        }
+
         // Check API key validity
         $this->checkApiKey($secret_key);
 
         // Retrieve payload
-        $input = @Tools::file_get_contents("php://input");
+        $input = @Tools::file_get_contents('php://input');
         ProcessLoggerHandler::logInfo(
             '$input => ' . $input,
             null,
@@ -114,16 +119,19 @@ class stripe_officialWebhookModuleFrontController extends ModuleFrontController
         // Retrieve http signature
         $sig_header = $_SERVER['HTTP_STRIPE_SIGNATURE'];
         ProcessLoggerHandler::logInfo(
-            'set http stripe signature => '.$sig_header,
+            'set http stripe signature => ' . $sig_header,
             null,
             null,
             'webhook - postProcess'
         );
 
+        $shopGroupId = Stripe_official::getShopGroupIdContext();
+        $shopId = Stripe_official::getShopIdContext();
+
         // Retrieve secret endpoint
-        $endpoint_secret = Configuration::get(Stripe_official::WEBHOOK_SIGNATURE,null, Stripe_official::getShopGroupIdContext(), Stripe_official::getShopIdContext());
+        $endpoint_secret = Configuration::get(Stripe_official::WEBHOOK_SIGNATURE, null, $shopGroupId, $shopId);
         ProcessLoggerHandler::logInfo(
-            'set endpoint secret => '.$endpoint_secret,
+            'set endpoint secret => ' . $endpoint_secret,
             null,
             null,
             'webhook - postProcess'
@@ -134,8 +142,8 @@ class stripe_officialWebhookModuleFrontController extends ModuleFrontController
 
         // Check if shop is the good one
         $cart = new Cart($event->data->object->metadata->id_cart);
-        if ($cart->id_shop_group != Stripe_official::getShopGroupIdContext()
-            || $cart->id_shop != Stripe_official::getShopIdContext()) {
+        if ($cart->id_shop_group != $shopGroupId
+            || $cart->id_shop != $shopId) {
             ProcessLoggerHandler::logInfo(
                 $msg = 'This cart does not come from this shop',
                 'Cart',
@@ -155,7 +163,7 @@ class stripe_officialWebhookModuleFrontController extends ModuleFrontController
             $paymentIntent = $event->data->object->payment_intent;
         }
         ProcessLoggerHandler::logInfo(
-            'payment_intent : '.$paymentIntent,
+            'payment_intent : ' . $paymentIntent,
             null,
             null,
             'webhook - postProcess'
@@ -186,24 +194,16 @@ class stripe_officialWebhookModuleFrontController extends ModuleFrontController
     private function checkApiKey($secretKey)
     {
         try {
-            ProcessLoggerHandler::logInfo(
-                $secretKey,
-                null,
-                null,
-                'webhook - checkApiKey'
-            );
-
             Stripe::setApiKey($secretKey);
 
             // Retrieve the request's body and parse it as JSON
             ProcessLoggerHandler::logInfo(
-                'setApiKey ok. Retrieve the request\'s body and parse it as JSON',
+                'setApiKey ok ' . substr($secretKey, 0, 10) . '... Retrieve the request\'s body and parse it as JSON',
                 null,
                 null,
                 'webhook - checkApiKey'
             );
         } catch (Exception $e) {
-            print_r($e->getMessage());
             ProcessLoggerHandler::logError(
                 'setApiKey not ok: ' . $e->getMessage(),
                 null,
@@ -240,7 +240,7 @@ class stripe_officialWebhookModuleFrontController extends ModuleFrontController
             }
 
             if (!in_array($event->type, Stripe_official::$webhook_events)) {
-                $msg = 'webhook "'.$event->type.'" call not yet supported';
+                $msg = 'webhook "' . $event->type . '" call not yet supported';
                 ProcessLoggerHandler::logInfo(
                     $msg,
                     null,
@@ -270,11 +270,12 @@ class stripe_officialWebhookModuleFrontController extends ModuleFrontController
                 null,
                 'webhook - constructEvent'
             );
+
             return $event;
         } catch (UnexpectedValueException $e) {
             // Invalid payload
             ProcessLoggerHandler::logError(
-                'Invalid payload : '.$e->getMessage(),
+                'Invalid payload : ' . $e->getMessage(),
                 null,
                 null,
                 'webhook - constructEvent'
@@ -286,7 +287,7 @@ class stripe_officialWebhookModuleFrontController extends ModuleFrontController
         } catch (SignatureVerificationException $e) {
             // Invalid signature
             ProcessLoggerHandler::logError(
-                'Invalid signature : '.$e->getMessage(),
+                'Invalid signature : ' . $e->getMessage(),
                 null,
                 null,
                 'webhook - constructEvent'
@@ -326,7 +327,7 @@ class stripe_officialWebhookModuleFrontController extends ModuleFrontController
                 );
                 ProcessLoggerHandler::closeLogger();
                 http_response_code(400);
-                die($msg);
+                exit($msg);
             }
 
             return $stripeEvent;
@@ -340,7 +341,7 @@ class stripe_officialWebhookModuleFrontController extends ModuleFrontController
             );
             ProcessLoggerHandler::closeLogger();
             http_response_code(400);
-            die($msg);
+            exit($msg);
         }
     }
 
@@ -358,7 +359,7 @@ class stripe_officialWebhookModuleFrontController extends ModuleFrontController
                 );
                 ProcessLoggerHandler::closeLogger();
                 http_response_code(400);
-                die($msg);
+                exit($msg);
             }
         } catch (PrestaShopException $e) {
             $msg = 'A problem appears while completing the Stripe event process => ' . $e->getMessage();
@@ -370,7 +371,7 @@ class stripe_officialWebhookModuleFrontController extends ModuleFrontController
             );
             ProcessLoggerHandler::closeLogger();
             http_response_code(400);
-            die($msg);
+            exit($msg);
         }
     }
 
@@ -388,7 +389,7 @@ class stripe_officialWebhookModuleFrontController extends ModuleFrontController
             );
             ProcessLoggerHandler::closeLogger();
             http_response_code(200);
-            die($msg);
+            exit($msg);
         }
 
         $lastRegisteredEvent = new StripeEvent();
@@ -404,7 +405,7 @@ class stripe_officialWebhookModuleFrontController extends ModuleFrontController
             );
             ProcessLoggerHandler::closeLogger();
             http_response_code(200);
-            die($msg);
+            exit($msg);
         }
 
         if ($lastRegisteredEvent->status != $eventStatus && $lastRegisteredEvent->date_add != null) {
@@ -421,7 +422,7 @@ class stripe_officialWebhookModuleFrontController extends ModuleFrontController
                 );
                 ProcessLoggerHandler::closeLogger();
                 http_response_code(200);
-                die($msg);
+                exit($msg);
             }
         }
 
@@ -447,12 +448,13 @@ class stripe_officialWebhookModuleFrontController extends ModuleFrontController
             );
         } elseif (!StripeEvent::validateTransitionStatus($lastRegisteredEvent->status, $eventStatus) || !$lastRegisteredEvent->isProcessed()) {
             if ($eventStatus === StripeEvent::CAPTURED_STATUS) {
-                if (isset($event->data->object->payment_method_details->type))
-                    $paymentMethodType =  $event->data->object->payment_method_details->type;
-                elseif (isset($event->data->object->payment_method_types[0]))
+                if (isset($event->data->object->payment_method_details->type)) {
+                    $paymentMethodType = $event->data->object->payment_method_details->type;
+                } elseif (isset($event->data->object->payment_method_types[0])) {
                     $paymentMethodType = $event->data->object->payment_method_types[0];
-                else
+                } else {
                     $paymentMethodType = null;
+                }
 
                 if ($paymentMethodType == 'card' && Configuration::get(Stripe_official::CATCHANDAUTHORIZE) != 'on') {
                     $msg = 'The card payment amount has already been captured.';
@@ -464,7 +466,7 @@ class stripe_officialWebhookModuleFrontController extends ModuleFrontController
                     );
                     ProcessLoggerHandler::closeLogger();
                     http_response_code(200);
-                    die($msg);
+                    exit($msg);
                 }
             }
             $msg = 'This Stripe module event "' . $eventStatus . '" cannot be processed because [Last event status: ' . $lastRegisteredEvent->status . ' | Processed : ' . ($lastRegisteredEvent->isProcessed() ? 'Yes' : 'No') . '].';
@@ -476,7 +478,7 @@ class stripe_officialWebhookModuleFrontController extends ModuleFrontController
             );
             ProcessLoggerHandler::closeLogger();
             http_response_code(400);
-            die($msg);
+            exit($msg);
         }
 
         return $eventStatus;
@@ -491,23 +493,23 @@ class stripe_officialWebhookModuleFrontController extends ModuleFrontController
             'webhook - createWebhookHandler'
         );
 
-        $events_states = array(
+        $events_states = [
             'charge.expired' => Configuration::get('PS_OS_CANCELED'),
             'charge.failed' => Configuration::get('PS_OS_ERROR'),
             'charge.succeeded' => Configuration::get('PS_OS_PAYMENT'),
             'charge.captured' => Configuration::get('PS_OS_PAYMENT'),
             'charge.refunded' => Configuration::get('PS_OS_REFUND'),
-            'charge.dispute.created' => Configuration::get(Stripe_official::SEPA_DISPUTE)
-        );
+            'charge.dispute.created' => Configuration::get(Stripe_official::SEPA_DISPUTE),
+        ];
 
         $handler = new ActionsHandler();
-        $handler->setConveyor(array(
+        $handler->setConveyor([
             'event_json' => $event,
             'module' => $this->module,
             'context' => $this->context,
             'events_states' => $events_states,
             'paymentIntent' => $paymentIntent,
-        ));
+        ]);
 
         return $handler;
     }
@@ -523,12 +525,13 @@ class stripe_officialWebhookModuleFrontController extends ModuleFrontController
 
         $eventType = $event->type;
 
-        if (isset($event->data->object->payment_method_details->type))
-            $paymentMethodType =  $event->data->object->payment_method_details->type;
-        elseif (isset($event->data->object->payment_method_types[0]))
+        if (isset($event->data->object->payment_method_details->type)) {
+            $paymentMethodType = $event->data->object->payment_method_details->type;
+        } elseif (isset($event->data->object->payment_method_types[0])) {
             $paymentMethodType = $event->data->object->payment_method_types[0];
-        else
+        } else {
             $paymentMethodType = null;
+        }
 
         if (($eventType == 'charge.succeeded' && $paymentMethodType == 'card')
             || ($eventType == 'charge.pending' && $paymentMethodType == 'sepa_debit')
@@ -582,7 +585,7 @@ class stripe_officialWebhookModuleFrontController extends ModuleFrontController
             );
             ProcessLoggerHandler::closeLogger();
             http_response_code(400);
-            die('Webhook actions process failed.');
+            exit('Webhook actions process failed.');
         }
     }
 }
