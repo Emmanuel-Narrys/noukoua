@@ -32,6 +32,18 @@ if (!defined('_PS_VERSION_')) {
 if (file_exists(_PS_MODULE_DIR_ . 'np_services/classes/NPService.php')) {
     require_once _PS_MODULE_DIR_ .  'np_services/classes/NPService.php';
 }
+
+if (file_exists(_PS_MODULE_DIR_ . 'np_services/classes/NPMarques.php')) {
+    require_once _PS_MODULE_DIR_ .  'np_services/classes/NPMarques.php';
+}
+
+if (file_exists(_PS_MODULE_DIR_ . 'np_services/classes/NPModeles.php')) {
+    require_once _PS_MODULE_DIR_ .  'np_services/classes/NPModeles.php';
+}
+
+if (file_exists(_PS_MODULE_DIR_ . 'np_services/classes/NPVersions.php')) {
+    require_once _PS_MODULE_DIR_ .  'np_services/classes/NPVersions.php';
+}
 class Np_services extends Module
 {
     protected $config_form = false;
@@ -40,6 +52,9 @@ class Np_services extends Module
 
     public static $img_services_dir = _PS_IMG_DIR_ . "np_services";
     public static $img_services_front = _PS_IMG_ . "np_services";
+
+    public static $img_marques_dir = _PS_IMG_DIR_ . "np_marques";
+    public static $img_marques_front = _PS_IMG_ . "np_marques";
 
     public function __construct()
     {
@@ -71,6 +86,21 @@ class Np_services extends Module
             [
                 "name" => $this->trans("Services"),
                 "class_name" => "AdminNPServices",
+                "parent" => "AdminNoukouaParent"
+            ],
+            [
+                "name" => $this->trans("Marques"),
+                "class_name" => "AdminNPMarques",
+                "parent" => "AdminNoukouaParent"
+            ],
+            [
+                "name" => $this->trans("Modeles"),
+                "class_name" => "AdminNPModeles",
+                "parent" => "AdminNoukouaParent"
+            ],
+            [
+                "name" => $this->trans("Versions Work Years"),
+                "class_name" => "AdminNPVersions",
                 "parent" => "AdminNoukouaParent"
             ],
         ];
@@ -242,6 +272,32 @@ class Np_services extends Module
     {
         $this->context->controller->addJS($this->_path . '/views/js/front.js');
         $this->context->controller->addCSS($this->_path . '/views/css/front.css');
+
+        $marques = NPMarques::getMarques();
+        $modeles = NPModeles::getModeles();
+        $versions_link = $this->context->link->getModuleLink('np_services', 'versions');
+
+        Media::addJsDef([
+            'modeles' => $modeles,
+            'versions_link' => $versions_link,
+            'modele_name' => $this->l('Modèle'),
+            'marque_name' => $this->l('Marque'),
+            'version_name' => $this->l('Version'),
+        ]);
+
+        $np_id_version = $this->context->cookie->__isset('np_id_version');
+        $np_version = null;
+        if ($np_id_version) {
+            $np_id_version = $this->context->cookie->__get('np_id_version');
+            $np_version = NPVersions::getVersion((int)$np_id_version);
+        }
+
+        $this->context->smarty->assign([
+            'marques' => $marques,
+            'modeles' => $modeles,
+            'versions_link', $versions_link,
+            'np_version' => $np_version
+        ]);
     }
 
     public function hookDisplayHome()
@@ -291,6 +347,11 @@ class Np_services extends Module
         if (!file_exists(self::$img_services_dir)) {
             $a = @mkdir(self::$img_services_dir);
             $a &= @chmod(self::$img_services_dir, 0777);
+        }
+
+        if (!file_exists(self::$img_marques_dir)) {
+            $a = @mkdir(self::$img_marques_dir);
+            $a &= @chmod(self::$img_marques_dir, 0777);
         }
 
         return true;

@@ -11,7 +11,7 @@ $(function () {
     /*  #########################   Functions   ###########################*/
 
     var setTabCategory = function (index) {
-        if($('.tab-content').children().length){
+        if ($('.tab-content').children().length) {
             for (var i = 0; i < $('.tab-content').children().length; i++) {
                 $('.tab-content').children()[i].setAttribute('aria-hidden', true)
             }
@@ -230,7 +230,6 @@ $(function () {
         $('#owl-carousel .owl-nav.disabled').width(owl.width() / owl.children().length)
     }
 
-
     $('#menu').on('click', function () {
         $('.toggle-menu-mobile').fadeToggle('show')
     })
@@ -246,8 +245,13 @@ $(function () {
     });
 
     $("#nav-ul .nav-li").click(function (e) {
-        $("#nav-ul .nav-li").removeClass('focus')
-        $(this).addClass('focus')
+        let li = $(this)
+        if (li.hasClass('focus')) {
+            $("#nav-ul .nav-li").removeClass('focus')
+        } else {
+            $("#nav-ul .nav-li").removeClass('focus')
+            $(this).addClass('focus')
+        }
     })
 
     $("#nav-ul .nav-li").focusout(function (e) {
@@ -283,5 +287,121 @@ $(function () {
             }, 800);
         }
 
+    })
+
+    let np_marque = $("#id_marque")
+    let np_marque_mobile = $("#id_marque_mobile")
+    let np_id_marque = 0
+    let np_modele = $("#id_modele")
+    let np_modele_mobile = $("#id_modele_mobile")
+    let np_id_modele = 0
+    let np_version = $("#id_version")
+    let np_version_mobile = $("#id_version_mobile")
+    let np_id_version = 0
+    let np_versions = []
+
+    np_marque.on('change', function (event) {
+        let value = parseInt(event.target.value)
+        if (value) {
+            np_modele.attr('disabled', false)
+            np_id_marque = value
+
+            np_modele.empty()
+            np_modele.append(`<option value="0">${modele_name}</option>`)
+            modeles.forEach((m) => {
+                if (parseInt(m.id_marque) == np_id_marque) {
+                    np_modele.append(`<option value="${m.id}"">${m.modele}</option>`)
+                }
+            })
+            np_modele.trigger('click')
+        } else {
+            np_modele.attr('disabled', true)
+            np_modele.val(0)
+            np_version.attr('disabled', true)
+            np_version.val(0)
+        }
+    })
+
+    np_modele.on('change', function (event) {
+        let value = parseInt(event.target.value)
+        if (value) {
+            np_id_modele = value
+            $.ajax(`${versions_link}?id_marque=${np_id_marque}&id_modele=${np_id_modele}`).done(response => {
+                np_versions = JSON.parse(response)
+                np_version.empty()
+                np_version.append(`<option value="0">${version_name}</option>`)
+                np_versions.forEach((v) => {
+                    np_version.append(`<option value="${v.id}"">${v.annee}</option>`)
+                })
+                np_version.attr('disabled', false)
+                np_version.trigger('click')
+            })
+        } else {
+            np_version.attr('disabled', true)
+            np_version.val(0)
+        }
+    })
+
+    np_version.on('change', function (event) {
+        let value = parseInt(event.target.value)
+        if (value) {
+            np_id_version = value
+            $.ajax(`${versions_link}?id=${np_id_version}`).done(response => {
+                if (parseInt(response)) {
+                    window.location.reload()
+                }
+            })
+        }
+    })
+
+    $('#unser_version').on('click', function (event) {
+        $.ajax(`${versions_link}?unset=1`).done(response => {
+            if (parseInt(response)) {
+                window.location.reload()
+            }
+        })
+    })
+
+    //Mobile
+    np_marque_mobile.on('change', function (event) {
+        let value = parseInt(event.target.value)
+        if (value) {
+            np_modele_mobile.attr('disabled', false)
+            np_id_marque = value
+
+            np_modele_mobile.empty()
+            np_modele_mobile.append(`<option value="0">${modele_name}</option>`)
+            modeles.forEach((m) => {
+                if (parseInt(m.id_marque) == np_id_marque) {
+                    np_modele_mobile.append(`<option value="${m.id}"">${m.modele}</option>`)
+                }
+            })
+            np_modele_mobile.trigger('click')
+        } else {
+            np_modele_mobile.attr('disabled', true)
+            np_modele_mobile.val(0)
+            np_version_mobile.attr('disabled', true)
+            np_version_mobile.val(0)
+        }
+    })
+
+    np_modele_mobile.on('change', function (event) {
+        let value = parseInt(event.target.value)
+        if (value) {
+            np_id_modele = value
+            $.ajax(`${versions_link}?id_marque=${np_id_marque}&id_modele=${np_id_modele}`).done(response => {
+                np_versions = JSON.parse(response)
+                np_version_mobile.empty()
+                np_version_mobile.append(`<option value="0">${version_name}</option>`)
+                np_versions.forEach((v) => {
+                    np_version_mobile.append(`<option value="${v.id}"">${v.annee}</option>`)
+                })
+                np_version_mobile.attr('disabled', false)
+                np_version_mobile.trigger('click')
+            })
+        } else {
+            np_version_mobile.attr('disabled', true)
+            np_version_mobile.val(0)
+        }
     })
 })

@@ -1,6 +1,6 @@
 <section class="tab-category-mobile">
     <div class="content-title">
-        <h2 class="title">{l s="Acheter par catégories"}</h2>
+        <h2 class="title">{l s="Acheter par catégories" mod='np_categoriestabsmobile'}</h2>
     </div>
     <ul class="tab-list" role="tablist">
         {foreach from=$categorysTabsMobile item=$categorys key=$key name=name}
@@ -18,8 +18,7 @@
                             <li class="tab-sub-item">
                                 <a href="{$category->link}" class="tab-item-link">
                                     <div class="content-title">
-                                        <img src="{$category->link_img}" alt="" class="img" width="40px"
-                                            height="40px">
+                                        <img src="{$category->link_img}" alt="" class="img" width="40px" height="40px">
                                         <h4 class="name">{$category->name}</h4>
                                     </div>
                                     <i class="fa fa-arrow-right"></i>

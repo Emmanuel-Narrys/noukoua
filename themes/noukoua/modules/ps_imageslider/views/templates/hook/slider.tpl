@@ -24,133 +24,87 @@
  *}
 
 
-  <!-- Slider -->
-  <section class="home-slider">
-    <div class="filter-container">
-      <form action="" method="post" class="form-filter">
-
+<!-- Slider -->
+<section class="home-slider">
+  <div class="filter-container">
+    <form action="" method="post" class="form-filter">
+      {if $np_version}
         <div class="title-content">
-          <h4 class="title"><i class="fa fa-car"></i>SÉLECTIONNEZ VOTRE VÉHICULE</h4>
+          <i class="fa fa-car"></i>
+          <h4 class="title">{l s="Votre véhicule" mod='np_services'}</h4>
         </div>
         <div class="space-content">
           <span class="vertical"></span>
           <span class="vertical"></span>
         </div>
-        <select name="year" id="year">
-          <option value="">Année</option>
-          <optgroup label="2010 - 2021">
-            <option value="">2010</option>
-            <option value="">2011</option>
-            <option value="">2012</option>
-            <option value="">2013</option>
-            <option value="">2014</option>
-          </optgroup>
-          <optgroup label="2000 - 2009">
-            <option value="">2000</option>
-            <option value="">2001</option>
-            <option value="">2002</option>
-            <option value="">2003</option>
-            <option value="">2004</option>
-          </optgroup>
-        </select>
-        <select name="manufacturer" id="manufacturer" disabled>
-          <option value="">Marque</option>
-          <optgroup label="A - F">
-            <option value="">apadzojojd</option>
-          </optgroup>
-          <optgroup label="G - L">
-            <option value="">sdpksqopdk</option>
-          </optgroup>
-          <optgroup label="M - R">
-            <option value="">sdopskdopsqk</option>
-          </optgroup>
-          <optgroup label="S - Z">
-            <option value="">l,dlsq,</option>
-          </optgroup>
-        </select>
-        <select name="model" id="model" disabled>
-          <option value="">Modèle</option>
-          <optgroup label="Voiture">
-            <option value="">Toyota xc</option>
-          </optgroup>
-          <optgroup label="Camion">
-            <option value="">Toyota XSX</option>
-          </optgroup>
-        </select>
-      </form>
-      <div class="text-content">
-        <h4 class="text">OU</h4>
-      </div>
-      <form action="" method="post" class="form-filter imatriculation">
-        <input type="text" name="imatriculation" id="imatriculation" placeholder="Numéro d'imatriculation">
-      </form>
-    </div>
-
-    <div class="owl-carousel" id="owl-carousel">
-      {foreach from=$homeslider.slides item=slide name='homeslider'}
-        <div class="item">
-          <img src="{$slide.image_url}" alt="{$slide.legend|escape}" />
+        <div class="version-content">
+          <div class="version">
+            <img class="version-img" src="{$np_version->logo}" alt="{$np_version->annee} {$np_version->modele}" />
+            <h4 class="version-name">{$np_version->annee} {$np_version->modele}</h4>
+          </div>
+          <button id="unser_version"><i class="fa fa-car"></i>{l s='changer de véhicule' mod='np_services'}</button>
         </div>
-      {/foreach}
-    </div>
-
-    <div class="filter-container mobile">
-      <form action="" method="post" class="form-filter">
-
+      {else}
         <div class="title-content">
-          <h4 class="title"><i class="fa fa-car"></i>SÉLECTIONNEZ VOTRE VÉHICULE</h4>
+          <i class="fa fa-car"></i>
+          <h4 class="title">{l s="Sélectionnez votre véhicule" mod='np_services'}</h4>
         </div>
         <div class="space-content">
           <span class="vertical"></span>
           <span class="vertical"></span>
         </div>
-        <select name="year" id="year">
-          <option value="">Année</option>
-          <optgroup label="2010 - 2021">
-            <option value="">2010</option>
-            <option value="">2011</option>
-            <option value="">2012</option>
-            <option value="">2013</option>
-            <option value="">2014</option>
-          </optgroup>
-          <optgroup label="2000 - 2009">
-            <option value="">2000</option>
-            <option value="">2001</option>
-            <option value="">2002</option>
-            <option value="">2003</option>
-            <option value="">2004</option>
-          </optgroup>
+        <select title="{l s='Marques' mod='np_services'}" name="id_marque" id="id_marque">
+          <option value="0">{l s="Marque" mod='np_services'}</option>
+          {foreach from=$marques item=$marque key=key name=name}
+            <option value="{$marque->id}">{$marque->marque}</option>
+          {/foreach}
         </select>
-        <select name="manufacturer" id="manufacturer" disabled>
-          <option value="">Marque</option>
-          <optgroup label="A - F">
-            <option value="">apadzojojd</option>
-          </optgroup>
-          <optgroup label="G - L">
-            <option value="">sdpksqopdk</option>
-          </optgroup>
-          <optgroup label="M - R">
-            <option value="">sdopskdopsqk</option>
-          </optgroup>
-          <optgroup label="S - Z">
-            <option value="">l,dlsq,</option>
-          </optgroup>
+        <select title="{l s='Modèles' mod='np_services'}" name="id_modele" id="id_modele" disabled>
+          <option value="0">{l s="Modèle" mod='np_services'}</option>
         </select>
-        <select name="model" id="model" disabled>
-          <option value="">Modèle</option>
-          <optgroup label="Voiture">
-            <option value="">Toyota xc</option>
-          </optgroup>
-          <optgroup label="Camion">
-            <option value="">Toyota XSX</option>
-          </optgroup>
+        <select title="{l s='Années' mod='np_services'}" name="id_version" id="id_version" disabled>
+          <option value="0">{l s="Année" mod='np_services'}</option>
         </select>
-      </form>
-      <div class="text-content">
+      {/if}
+    </form>
+    {* <div class="text-content">
         <h4 class="text">OU</h4>
       </div>
       <form action="" method="post" class="form-filter imatriculation">
         <input type="text" name="imatriculation" id="imatriculation" placeholder="Numéro d'imatriculation">
-      </form>
-    </div>
-  </section>
+      </form> *}
+  </div>
+
+  <div class="owl-carousel" id="owl-carousel">
+    {foreach from=$homeslider.slides item=slide name='homeslider'}
+      <div class="item">
+        <img src="{$slide.image_url}" alt="{$slide.legend|escape}" />
+      </div>
+    {/foreach}
+  </div>
+
+  <div class="filter-container mobile">
+    <form action="" method="post" class="form-filter">
+      <div class="title-content">
+        <i class="fa fa-car"></i>
+        <h4 class="title">{l s="Sélectionnez votre véhicule" mod='np_services'}</h4>
+      </div>
+      <div class="space-content">
+        <span class="vertical"></span>
+        <span class="vertical"></span>
+      </div>
+      <select title="{l s='Marques' mod='np_services'}" name="id_marque" id="id_marque_mobile">
+        <option value="0">{l s="Marque" mod='np_services'}</option>
+        {foreach from=$marques item=$marque key=key name=name}
+          <option value="{$marque->id}">{$marque->marque}</option>
+        {/foreach}
+      </select>
+      <select title="{l s='Modèles' mod='np_services'}" name="id_modele" id="id_modele_mobile" disabled>
+        <option value="0">{l s="Modèle" mod='np_services'}</option>
+      </select>
+      <select title="{l s='Années' mod='np_services'}" name="id_version" id="id_version_mobile" disabled>
+        <option value="0">{l s="Année" mod='np_services'}</option>
+      </select>
+    </form>
+  </div>
+</section>

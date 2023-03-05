@@ -1,6 +1,6 @@
 <section class="cards_category">
     <div class="cards_category_title">
-        <h3>Acheter par catégorie</h3>
+        <h3>{l s='Acheter par catégorie' mod='np_categoriescards'}</h3>
     </div>
     <div class="cards_category_content">
         {foreach from=$categorysCards item=$category key=$key name=name}
