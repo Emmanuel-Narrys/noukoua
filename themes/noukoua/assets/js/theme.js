@@ -404,4 +404,24 @@ $(function () {
             np_version_mobile.val(0)
         }
     })
+
+    np_version_mobile.on('change', function (event) {
+        let value = parseInt(event.target.value)
+        if (value) {
+            np_id_version = value
+            $.ajax(`${versions_link}?id=${np_id_version}`).done(response => {
+                if (parseInt(response)) {
+                    window.location.reload()
+                }
+            })
+        }
+    })
+
+    $('#unser_version_mobile').on('click', function (event) {
+        $.ajax(`${versions_link}?unset=1`).done(response => {
+            if (parseInt(response)) {
+                window.location.reload()
+            }
+        })
+    })
 })

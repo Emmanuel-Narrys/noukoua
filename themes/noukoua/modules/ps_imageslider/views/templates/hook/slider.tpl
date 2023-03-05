@@ -85,26 +85,44 @@
 
   <div class="filter-container mobile">
     <form action="" method="post" class="form-filter">
-      <div class="title-content">
-        <i class="fa fa-car"></i>
-        <h4 class="title">{l s="Sélectionnez votre véhicule" mod='np_services'}</h4>
-      </div>
-      <div class="space-content">
-        <span class="vertical"></span>
-        <span class="vertical"></span>
-      </div>
-      <select title="{l s='Marques' mod='np_services'}" name="id_marque" id="id_marque_mobile">
-        <option value="0">{l s="Marque" mod='np_services'}</option>
-        {foreach from=$marques item=$marque key=key name=name}
-          <option value="{$marque->id}">{$marque->marque}</option>
-        {/foreach}
-      </select>
-      <select title="{l s='Modèles' mod='np_services'}" name="id_modele" id="id_modele_mobile" disabled>
-        <option value="0">{l s="Modèle" mod='np_services'}</option>
-      </select>
-      <select title="{l s='Années' mod='np_services'}" name="id_version" id="id_version_mobile" disabled>
-        <option value="0">{l s="Année" mod='np_services'}</option>
-      </select>
+      {if $np_version}
+        <div class="title-content">
+          <i class="fa fa-car"></i>
+          <h4 class="title">{l s="Votre véhicule" mod='np_services'}</h4>
+        </div>
+        <div class="space-content">
+          <span class="vertical"></span>
+          <span class="vertical"></span>
+        </div>
+        <div class="version-content">
+          <div class="version">
+            <img class="version-img" src="{$np_version->logo}" alt="{$np_version->annee} {$np_version->modele}" />
+            <h4 class="version-name">{$np_version->annee} {$np_version->modele}</h4>
+          </div>
+          <button id="unser_version_mobile"><i class="fa fa-car"></i>{l s='changer de véhicule' mod='np_services'}</button>
+        </div>
+      {else}
+        <div class="title-content">
+          <i class="fa fa-car"></i>
+          <h4 class="title">{l s="Sélectionnez votre véhicule" mod='np_services'}</h4>
+        </div>
+        <div class="space-content">
+          <span class="vertical"></span>
+          <span class="vertical"></span>
+        </div>
+        <select title="{l s='Marques' mod='np_services'}" name="id_marque" id="id_marque_mobile">
+          <option value="0">{l s="Marque" mod='np_services'}</option>
+          {foreach from=$marques item=$marque key=key name=name}
+            <option value="{$marque->id}">{$marque->marque}</option>
+          {/foreach}
+        </select>
+        <select title="{l s='Modèles' mod='np_services'}" name="id_modele" id="id_modele_mobile" disabled>
+          <option value="0">{l s="Modèle" mod='np_services'}</option>
+        </select>
+        <select title="{l s='Années' mod='np_services'}" name="id_version" id="id_version_mobile" disabled>
+          <option value="0">{l s="Année" mod='np_services'}</option>
+        </select>
+      {/if}
     </form>
   </div>
 </section>
