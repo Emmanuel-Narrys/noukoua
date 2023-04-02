@@ -120,8 +120,43 @@ class Np_services extends Module
             $this->registerHook('header') &&
             $this->registerHook('backOfficeHeader') &&
             $this->registerHook('displayHome') &&
+            $this->registerHook('displayAdminProductsExtra') &&
+            $this->registerHook('displayAdminProductsMainStepLeftColumnMiddle') &&
+            $this->registerHook('actionProductDelete') &&
+            $this->registerHook('filterProductSearch') &&
+            $this->registerHook('actionProductSearchProviderRunQueryBefore') &&
             $this->installTabs(true) &&
             $this->installFolders();;
+    }
+
+    public function hookDisplayAdminProductsMainStepLeftColumnMiddle($params)
+    {
+        if (!empty($params) && isset($params['id_product']) && (int) $params['id_product']) {
+            $versions = NPVersions::getVersions();
+            $versions_values = NPVersions::getVersions(null, null, $params['id_product']);
+
+            $this->context->smarty->assign([
+                "versionsvehicul" => $versions,
+                "versions_values" => $versions_values,
+                "select_all" => count($versions) == count($versions_values) ? 1 : 0,
+                "url_versionsvehicul" => $this->context->link->getModuleLink($this->name, 'versions')
+            ]);
+
+            return $this->display(__FILE__, 'modelsvehicul.tpl');
+        }
+    }
+
+    public function hookActionProductDelete($params)
+    {
+        NPVersions::attachVersions($params['id_product'], []);
+    }
+
+    public function hookFilterProductSearch($params)
+    {
+    }
+
+    public function hookActionProductSearchProviderRunQueryBefore($params)
+    {
     }
 
     public function uninstall()

@@ -45,6 +45,12 @@ $sql[] = 'CREATE TABLE IF NOT EXISTS `' . _DB_PREFIX_ . 'np_services_lang` (
     PRIMARY KEY  (`id_np_services`,`id_lang`)
 ) ENGINE=' . _MYSQL_ENGINE_ . ' DEFAULT CHARSET=utf8;';
 
+$sql[] = 'CREATE TABLE IF NOT EXISTS `' . _DB_PREFIX_ . 'products_versions` (
+    `id_version` int(11) NOT NULL,
+    `id_product` int(11) NOT NULL,
+    PRIMARY KEY  (`id_version`,`id_product`)
+) ENGINE=' . _MYSQL_ENGINE_ . ' DEFAULT CHARSET=utf8;';
+
 foreach ($sql as $query) {
     if (Db::getInstance()->execute($query) == false) {
         return false;

@@ -51,14 +51,24 @@ class NPVersions extends ObjectModel
         ],
     ];
 
-    public static function getVersions(int $id_marque, int $id_modele): array
+    public static function getVersions(int $id_marque = null, int $id_modele = null, int $id_product = null): array
     {
         $q = new DbQuery();
         $q->select("a.*")
             ->from("versions_work", 'a')
-            ->where("a.id_marque = {$id_marque} AND a.id_modele = {$id_modele}")
-            ->groupBy('a.annee')
-            ->orderBy('a.annee ASC');
+            ->groupBy('a.annee, a.id_marque, a.id_modele')
+            ->orderBy('a.id ASC');
+
+        if ($id_marque) {
+            $q->where("a.id_marque = {$id_marque}");
+        }
+        if ($id_modele) {
+            $q->where("a.id_modele = {$id_modele}");
+        }
+        if ($id_product) {
+            $q->innerJoin("products_versions", "b", "b.id_version = a.id");
+            $q->where("b.id_product = {$id_product}");
+        }
 
         $results = Db::getInstance()->executeS($q);
         if ($results && !empty($results)) {
@@ -114,5 +124,31 @@ class NPVersions extends ObjectModel
             return $return[0];
         }
         return null;
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param integer $id_product
+     * @param array $versions
+     * @return bool|mixed
+     */
+
+    public static function attachVersions(int $id_product, array $versions)
+    {
+        Db::getInstance()->delete("products_versions", "id_product = {$id_product}");
+
+        if (empty($versions)) {
+            return true;
+        }
+
+        $data = array_map(function ($a) use ($id_product) {
+            return [
+                "id_product" => $id_product,
+                "id_version" => (int) $a,
+            ];
+        }, $versions);
+
+        return Db::getInstance()->insert("products_versions", $data, false, true, Db::INSERT_IGNORE);
     }
 }
